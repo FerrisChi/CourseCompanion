@@ -1,0 +1,6 @@
+Hi can you recommend a course for me?
+I'm pursuing Meng at Electrical and Computer Engineering
+I'm interested in Natrual Language Processing and large language models. I want to learn how to build application with it.
+I want to gain practical experience to use gpt and build my own application with it and learn software development at the same time
+I had a research in graph nerual network and had a project to build a web application of campus navigation system. I also did a project about number regonization in pictures using Transformers. I volunteered in building school online forum.
+I took deep learning and neural network course beyond the transcript. It helps me understand lots of models such as diffusion.

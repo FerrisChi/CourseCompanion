@@ -1,0 +1,7 @@
+chromadb==0.4.15
+tiktoken==0.5.1
+langchain==0.0.336
+openai==0.27.4
+django==4.2.7
+drf-yasg==1.21.7
+django-cors-headers==4.3.1

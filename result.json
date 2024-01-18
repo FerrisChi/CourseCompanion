@@ -1,0 +1,32 @@
+[
+    {
+        "code": "CSC486H1",
+        "name": "Knowledge Representation and Reasoning",
+        "score": 95,
+        "reason": "This course covers symbolic knowledge representation and automated reasoning, which are foundational for understanding and implementing large language models like GPT. It aligns closely with your interest in Natural Language Processing."
+    },
+    {
+        "code": "CSC443H1",
+        "name": "Database System Technology",
+        "score": 90,
+        "reason": "Backend development is crucial for building scalable applications, and this course offers in-depth knowledge of database management systems, which is essential for backend development, especially when dealing with large language models and their data."
+    },
+    {
+        "code": "CSC318H1",
+        "name": "The Design of Interactive Computational Media",
+        "score": 85,
+        "reason": "Since you have experience in web applications, this course will enhance your user-centred design skills for interactive systems, which is beneficial for developing the frontend of applications using models like GPT."
+    },
+    {
+        "code": "CSC494Y1",
+        "name": "Computer Science Project",
+        "score": 80,
+        "reason": "This project-based course will allow you to gain practical experience by working on a multidisciplinary project, which can be tailored to your interests in Natural Language Processing or backend development."
+    },
+    {
+        "code": "CSC324H1",
+        "name": "Principles of Programming Languages",
+        "score": 75,
+        "reason": "Understanding different programming paradigms is useful when building applications with complex models like GPT, and this course will expand your knowledge of functional and logic programming paradigms."
+    }
+]

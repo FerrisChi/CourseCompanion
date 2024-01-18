@@ -1,0 +1,429 @@
+[
+  {
+    "program": "Bachelor in Environmental Science",
+    "department": "Department of Earth & Environmental Sciences",
+    "interest": "Sustainable development, climate change, and environmental policy; Keen on fieldwork and data analysis.",
+    "goal": "Aim for a GPA of 3.7 or above; plan to work with environmental NGOs; aspire to contribute to global sustainability efforts; consider a Master's degree in Environmental Policy",
+    "experience": "Volunteer work with a local conservation group; Summer research assistant on a climate change impact study; Internship with an environmental consulting firm.",
+    "course_taken": [
+      "ENV333H1 - Ecological Worldviews",
+      "ENV200H1 - Assessing Global Change: Science and the Environment",
+      "ENV381H1 - Special Topics in Environment",
+      "ENV237H1 - Physics of the Changing Environment A",
+      "EEB215H1 - Conservation Biology",
+      "EEB434H1 - Marine Ecology"
+    ],
+    "course_to_take": [
+      "ECO313H1 - Environmental Economics and Policies",
+      "ENV320H1 - National Environmental Policy",
+      "ESS198H1 - Resources and Sustainability"
+    ],
+    "recommendaion": [
+      {
+        "code": "ENV338H1",
+        "name": "Environmental Research Data and Decision-making",
+        "score": 95,
+        "reason": "This course is highly relevant to your interest in data analysis and can provide a strong foundation for your aspiration to work with environmental NGOs and contribute to global sustainability efforts."
+      },
+      {
+        "code": "ENV451H1",
+        "name": "Current Environmental Topics",
+        "score": 92,
+        "reason": "As a capstone course, it integrates multidisciplinary strands of environmental learning which aligns with your academic goals and interests in sustainable development and environmental policy."
+      },
+      {
+        "code": "ENV322H1",
+        "name": "International Environmental Policy",
+        "score": 88,
+        "reason": "This course aligns with your aspirations to contribute to global sustainability efforts and would be beneficial for your planned Master's degree in Environmental Policy."
+      },
+      {
+        "code": "ENV440H1",
+        "name": "Professional Experience Course",
+        "score": 85,
+        "reason": "The practical experience from the work placement component of this course will be invaluable for your career goal to work with environmental NGOs and is suitable given your previous internship experience."
+      },
+      {
+        "code": "ENV462H1",
+        "name": "Energy and Environment: Economics, Politics, and Sustainability",
+        "score": 82,
+        "reason": "The interdisciplinary nature of this course will enhance your understanding of energy and environmental issues, which is important for your future work in environmental policy and sustainability."
+      }
+    ],
+    "score": 0.0,
+    "hit": 5
+  },
+  {
+    "program": "Bachelor of Arts in International Relations",
+    "department": "Department of Political Science",
+    "interest": "Global affairs, diplomacy, political theory; Enthusiastic about public speaking and debate forums.",
+    "goal": "Aim to maintain a GPA of 3.6 or higher; aspires to intern at the United Nations or a related NGO; desires to work in the diplomatic service or international policy; Considering further studies with a focus on peace and conflict studies.",
+    "experience": "Internship at a non-profit focused on international development; Participation in Model UN conferences; Volunteer at local community center for cultural exchange programs",
+    "course_taken": [
+      "POL208H1 - Introduction to International Relations",
+      "POL341H1 - International Law: Operation of the International Legal Order",
+      "POL480H1 - Studies in Comparative Political Theory",
+      "POL300Y0 - Topics in Comparative Politics",
+      "POL300Y0 - Topics in Comparative Politics",
+      "POL12H1 - International Law: Foundations",
+      "POL466H1 - Topics in International Politics III"
+    ],
+    "course_to_take": [
+      "POL477H1 - Advanced Topics in International Political Economy",
+      "VIC181H1 - Events in the Public Sphere: World Affairs",
+      "POL313H1 - Canadian Foreign Policy Process"
+    ],
+    "recommendaion": [
+      {
+        "code": "TRN410H1",
+        "name": "Researching Critical Cases in Contemporary International Relations",
+        "score": 98,
+        "reason": "This course aligns perfectly with your interest in global affairs and diplomacy, while also providing a platform to apply your research skills to an original project, which will be beneficial for your academic goals and aspirations for further studies in peace and conflict studies."
+      },
+      {
+        "code": "HIS465H1",
+        "name": "Gender and International Relations",
+        "score": 92,
+        "reason": "The seminar's focus on gender as a category of analysis in international relations complements your interest in international policy and offers a unique perspective that could be valuable in diplomatic service or NGO work."
+      },
+      {
+        "code": "TRN421Y1",
+        "name": "Fragile and Conflict-Affected States in Global Politics",
+        "score": 90,
+        "reason": "Given your interest in peace and conflict studies and your aim to work in international policy, this course offers in-depth insight into one of the most pressing issues in international relations, which could be highly relevant for your career goals."
+      },
+      {
+        "code": "POL477H1",
+        "name": "Advanced Topics in International Political Economy",
+        "score": 88,
+        "reason": "This course will deepen your understanding of the interplay between politics and economics on a global scale, which is essential knowledge for anyone aspiring to work in international relations or diplomacy."
+      },
+      {
+        "code": "POL338H1",
+        "name": "Queer International Relations",
+        "score": 85,
+        "reason": "The course explores international relations through a critical, contemporary lens, which could add a unique dimension to your understanding of global affairs and benefit your participation in debate forums and Model UN conferences."
+      }
+    ],
+    "score": 0.3333333333333333,
+    "hit": 5
+  },
+  {
+    "program": "Bachelor of Science in Computer Science",
+    "department": "Department of Computer Science",
+    "interest": "Artificial Intelligence, Machine Learning, and Human-Computer Interaction; passionate about algorithm challenges and software development projects.",
+    "goal": "Secure a GPA of 3.8 or higher; obtain a software engineering position at a leading tech company; pursue a Master's degree in Artificial Intelligence.",
+    "experience": "Software development intern at a tech startup; Undergraduate research assistant in AI lab; Organized coding bootcamps for peers",
+    "course_taken": [
+      "CSC148H1 - Introduction to Computer Science",
+      "CSC373H1 - Algorithm Design, Analysis & Complexity",
+      "CSC369H1 - Operating Systems",
+      "CSC443H1 - Database System Technology",
+      "CSC458H1 - Computer Networking Systems",
+      "MAT482H1 - Topics in Mathematics"
+    ],
+    "course_to_take": [
+      "ECE1724H - Special Topics in Software Systems: Artificial Intelligence",
+      "RSM338H1 - Applications of Machine Learning in Finance",
+      "CSC485H1 - Computational Linguistics"
+    ],
+    "recommendaion": [
+      {
+        "code": "ECE1786H",
+        "name": "Creative Applications of Natural Language Processing",
+        "score": 95,
+        "reason": "This course aligns closely with your interests in AI and human-computer interaction, and it will provide practical, project-based experience that could be valuable for a future career in software engineering."
+      },
+      {
+        "code": "CSC401H1",
+        "name": "Natural Language Computing",
+        "score": 92,
+        "reason": "The focus on natural language processing and speech applications is directly relevant to your interest in AI and human-computer interaction, and the course will help build a strong foundation for your anticipated graduate studies."
+      },
+      {
+        "code": "CSC412H1",
+        "name": "Probabilistic Learning and Reasoning",
+        "score": 89,
+        "reason": "This course's emphasis on probabilistic models in AI is consistent with your academic goals and would complement your existing research experience while preparing you for machine learning roles."
+      },
+      {
+        "code": "CSC486H1",
+        "name": "Knowledge Representation and Reasoning",
+        "score": 87,
+        "reason": "The course content on automated reasoning and symbolic knowledge representation is pertinent to AI and offers useful insights for both your academic progression and career aspirations in tech."
+      },
+      {
+        "code": "RSM338H1",
+        "name": "Applications of Machine Learning in Finance",
+        "score": 82,
+        "reason": "This course provides a different perspective by applying machine learning in finance, which could diversify your skill set and appeal to tech companies with financial applications. Although less directly related to AI, it remains a field with significant growth and job opportunities."
+      }
+    ],
+    "score": 0.3333333333333333,
+    "hit": 4
+  },
+  {
+    "program": "Bachelor of Science in Environmental Science",
+    "department": "Department of Environmental Studies",
+    "interest": "Renewable energy, climate change, and sustainability; enjoys field research and interdisciplinary studies.",
+    "goal": "Strives to maintain a GPA of 3.7 or higher; aspires to work with environmental NGOs or governmental agencies; plans to specialize in sustainable development practices.",
+    "experience": "Environmental research assistant for a university project; Volunteer for local wildlife conservation efforts; Organizer for campus sustainability initiatives",
+    "course_taken": [
+      "EEB215H1 - Conservation Biology",
+      "GGR481H1 - Field Course in Environmental Geography",
+      "PHL373H1 - Issues in Environmental Ethics"
+    ],
+    "course_to_take": [
+      "ENV462H1 - Energy and Environment: Economics, Politics, and Sustainability",
+      "ENV337H1 - Human Interactions with the Environment",
+      "ENV322H1 - International Environmental Policy"
+    ],
+    "recommendaion": [
+      {
+        "code": "ENV338H1",
+        "name": "Environmental Research Data and Decision-making",
+        "score": 92,
+        "reason": "This course aligns well with your interest in field research and environmental data, offering practical applications and case studies that are relevant to your goals in sustainable development and work within NGOs or government agencies. Its focus on informed decision-making is essential for maintaining a high GPA and professional aspirations."
+      },
+      {
+        "code": "ENV462H1",
+        "name": "Energy and Environment: Economics, Politics, and Sustainability",
+        "score": 90,
+        "reason": "This interdisciplinary course covers energy markets and sustainability, which directly relates to your interests in renewable energy and climate change. It will provide a broad understanding of the economic and political aspects crucial for your future career in environmental policy."
+      },
+      {
+        "code": "ENV350H1",
+        "name": "Energy Policy and Environment",
+        "score": 88,
+        "reason": "The course's focus on energy policy and its environmental impacts aligns with your academic goals and personal interests in renewable energy and sustainability. It will give you insights into policy-making processes, which is beneficial for working with environmental NGOs or governmental bodies."
+      },
+      {
+        "code": "ENV322H1",
+        "name": "International Environmental Policy",
+        "score": 85,
+        "reason": "This course looks at global environmental policies, complementing your aspirations to work in sustainable development and potentially with international NGOs or governmental agencies. It will enhance your understanding of multilateral environmental agreements."
+      },
+      {
+        "code": "ENV421Y1",
+        "name": "Community Research for Social & Environmental Change",
+        "score": 82,
+        "reason": "Although more community-focused, this research course offers an action-based approach that can provide practical skills and experience, contributing to your work as an environmental research assistant and organizer for sustainability initiatives on campus."
+      }
+    ],
+    "score": 0.6666666666666666,
+    "hit": 5
+  },
+  {
+    "program": "Bachelor of Science in Electrical Engineering",
+    "department": "Department of Electrical and Electronic Engineering",
+    "interest": "Renewable energy systems, power electronics, and embedded systems; fond of project-based learning and interdisciplinary collaborations.",
+    "goal": "Maintain a GPA of 3.6 or higher; secure a position in the energy sector; pursue a Master's in Renewable Energy Systems; contribute to sustainable energy solutions.",
+    "experience": "Internship at a power company, part-time technician in university's electronics lab, volunteer for a non-profit promoting STEM education",
+    "course_taken": [
+      "ECE201H1 - Electrical and Computer Engineering Seminar",
+      "ECE191H1 - Introduction to Electrical and Computer Engineering",
+      "CSC385H1 - Microprocessor Systems"
+    ],
+    "course_to_take": [
+      "ENV450H1 - Energy and Environment Solutions",
+      "ECE1724H - Special Topics in Software Systems: Artificial Intelligence",
+      "CSC301H1 - Introduction to Software Engineering"
+    ],
+    "recommendaion": [
+      {
+        "code": "ENV462H1",
+        "name": "Energy and Environment: Economics, Politics, and Sustainability",
+        "score": 95,
+        "reason": "This course aligns closely with your interest in renewable energy systems and your goal to work in the energy sector. Its interdisciplinary approach will complement your engineering background."
+      },
+      {
+        "code": "ENV450H1",
+        "name": "Energy and Environment Solutions",
+        "score": 90,
+        "reason": "As an interdisciplinary course that addresses current energy problems, this will be highly relevant to your goal of contributing to sustainable energy solutions and your pursuit of a Master's in Renewable Energy Systems."
+      },
+      {
+        "code": "ECO314H1",
+        "name": "Energy and the Environment",
+        "score": 85,
+        "reason": "This course offers an economic perspective on energy markets and environmental challenges, which will be beneficial for your understanding of the energy sector and for interdisciplinary collaborations."
+      },
+      {
+        "code": "ENV350H1",
+        "name": "Energy Policy and Environment",
+        "score": 80,
+        "reason": "This course will provide you with the policy context of the energy sector, which is essential for your future career in this field and for your interest in sustainable energy solutions."
+      },
+      {
+        "code": "ENG499Y1",
+        "name": "Advanced Research Seminar",
+        "score": 70,
+        "reason": "This advanced seminar course will allow you to practice research at a high level, which is suitable for your academic performance and aspirations for graduate studies, albeit less focused on your specific interests in energy systems."
+      }
+    ],
+    "score": 0.3333333333333333,
+    "hit": 2
+  },
+  {
+    "program": "Bachelor of Arts in International Relations",
+    "department": "Department of Political Science",
+    "interest": "Global politics, foreign affairs, and diplomacy; enthusiastic about policy analysis and multicultural communication.",
+    "goal": "Aim to maintain a GPA above 3.5; aspire to work at an international organization like the UN; seek opportunities to study abroad; intend to learn multiple foreign languages.",
+    "experience": "Intern at a local government's international affairs department; participated in Model United Nations; volunteer for a non-profit organization focusing on global education.",
+    "course_taken": [
+      "POL208H1 - Introduction to International Relations",
+      "POL486H1 - Topics in International Politics I",
+      "POL477H1 - Advanced Topics in International Political Economy",
+      "PHL366H1 - Topics in Political Philosophy",
+      "CAS420H1 - Asia and the New Global Economy",
+      "SOC422H1 - Advanced Studies in Political Sociology"
+    ],
+    "course_to_take": [
+      "POL340H1 - International Law: Foundations",
+      "POL341H1 - International Law: Operation of the International Legal Order",
+      "POL360H1 - Topics in Latin American Politics"
+    ],
+    "recommendaion": [
+      {
+        "code": "TRN410H1",
+        "name": "Researching Critical Cases in Contemporary International Relations",
+        "score": 95,
+        "reason": "This course aligns perfectly with your interests in policy analysis and provides practical research skills that will be advantageous for a career in international organizations like the UN."
+      },
+      {
+        "code": "POL466H1",
+        "name": "Topics in International Politics III",
+        "score": 90,
+        "reason": "As an advanced course, it will delve deep into international politics, a field you are passionate about, and will help you maintain your high GPA through engaging content."
+      },
+      {
+        "code": "AFR353H1",
+        "name": "International Relations of Africa",
+        "score": 85,
+        "reason": "This course offers a regional specialization that complements your global perspective and could be particularly relevant for work with international organizations that focus on diverse geographies."
+      },
+      {
+        "code": "MUN200H1",
+        "name": "Understanding Global Controversies",
+        "score": 80,
+        "reason": "The multidisciplinary approach and focus on global issues provide an excellent platform for developing your interests in diplomacy and multicultural communication."
+      },
+      {
+        "code": "NEW371H0",
+        "name": "International Field Course",
+        "score": 75,
+        "reason": "Although not a traditional classroom setting, this course offers practical international experience and aligns with your interest in study abroad opportunities, which is beneficial for a career in international relations."
+      }
+    ],
+    "score": 0.0,
+    "hit": 5
+  },
+  {
+    "program": "Bachelor of Science in Computer Science",
+    "department": "Department of Computer Science",
+    "interest": "Artificial intelligence, machine learning, and data analysis; passionate about innovative software solutions and collaborative projects.",
+    "goal": "Targeting a GPA of 3.8 or higher; ambition to work for leading tech companies; planning to specialize in AI for healthcare; aim to enroll in a Master's program focusing on data science.",
+    "experience": "Software development intern at a startup; participated in hackathons; undergraduate teaching assistant for programming courses.",
+    "course_taken": [
+      "CSC343H1 - Introduction to Databases",
+      "CSC207H1 - Software Design",
+      "CSC373H1 - Algorithm Design, Analysis & Complexity",
+      "CSC369H1 - Operating Systems",
+      "CSC301H1 - Introduction to Software Engineering",
+      "CSC148H1 - Introduction to Computer Science"
+    ],
+    "course_to_take": [
+      "ECE1724H - Special Topics in Software Systems: Artificial Intelligence",
+      "CSC412H1 - Probabilistic Learning and Reasoning",
+      "CSC448H1 - Formal Languages and Automata"
+    ],
+    "recommendaion": [
+      {
+        "code": "ECE1724H",
+        "name": "Special Topics in Software Systems: Artificial Intelligence",
+        "score": 95,
+        "reason": "This graduate-level course is highly relevant to your interest in artificial intelligence, particularly as it intersects with biology and neuroscience, which could be beneficial for specializing in AI for healthcare."
+      },
+      {
+        "code": "CSC412H1",
+        "name": "Probabilistic Learning and Reasoning",
+        "score": 90,
+        "reason": "This course covers probabilistic models and reasoning, which are fundamental for advanced studies in machine learning and AI, areas you are passionate about."
+      },
+      {
+        "code": "CSC485H1",
+        "name": "Computational Linguistics",
+        "score": 80,
+        "reason": "Computational linguistics is closely related to AI and machine learning, with applications in natural language processing that can be applied to healthcare."
+      },
+      {
+        "code": "CSC443H1",
+        "name": "Database System Technology",
+        "score": 75,
+        "reason": "Given your background in databases and operating systems, this course will deepen your knowledge in database management systems, which are crucial for handling healthcare data."
+      },
+      {
+        "code": "CSC488H1",
+        "name": "Compilers and Interpreters",
+        "score": 65,
+        "reason": "While not directly related to AI, this course will strengthen your programming skills and understanding of software systems."
+      }
+    ],
+    "score": 0.6666666666666666,
+    "hit": 4
+  },
+  {
+    "program": "Bachelor of Science in Biotechnology",
+    "department": "Department of Life Sciences",
+    "interest": "Genetic engineering, bioinformatics, and pharmaceutical research; adaptive in lab environments and eager for hands-on learning.",
+    "goal": "Strives for a GPA of 3.9; aims to engage in cutting-edge research in gene therapy; plans to pursue a Master's degree in Molecular Biology; aspires to be part of biotech startups.",
+    "experience": "Lab assistant at the biotechnology research center; volunteer in community health initiatives; participated in the university's science outreach programs",
+    "course_taken": [
+      "BIO260H1 - Concepts in Genetics",
+      "CSB201H1 - Molecular Biology, Biotechnology and You",
+      "BCH472Y1 - Advanced Summer Research Project in Biochemistry",
+      "MGY380H1 - Microbiology Laboratory I: Bacteria",
+      "IMM360H1 - Scientific Methods and Research in Immunology",
+      "CHE354H1 - Cellular and Molecular Biology"
+    ],
+    "course_to_take": [
+      "CSB202H1 - Further Exploration in Biotechnology",
+      "MGY441H1 - Bioinformatics",
+      "HMB401H1 - Biomedical Advances & Technologies"
+    ],
+    "recommendaion": [
+      {
+        "code": "HMB491Y1",
+        "name": "Project in Biotechnology Industry",
+        "score": 95,
+        "reason": "This course aligns with your interest in hands-on learning and goal to engage in cutting-edge research. It also offers a chance to explore career paths in biotech startups and gain practical industry experience."
+      },
+      {
+        "code": "JPM300H1",
+        "name": "Research Readiness and Advancing Biomedical Discoveries",
+        "score": 92,
+        "reason": "The focus on translating laboratory discoveries to patient health improvements complements your interest in gene therapy and provides essential skills for future research and career development."
+      },
+      {
+        "code": "BCH372Y1",
+        "name": "Summer Research in Biochemistry",
+        "score": 89,
+        "reason": "This course provides an opportunity for an individual research project that aligns with your interest in bioinformatics and pharmaceutical research, contributing to your goal of a high GPA and advanced study."
+      },
+      {
+        "code": "HMB401H1",
+        "name": "Biomedical Advances & Technologies",
+        "score": 87,
+        "reason": "The course content on biomedical technologies and patents is relevant to your interest in biotechnology, and aims to enhance knowledge in drug development and medical devices, which is beneficial for a career in biotech startups."
+      },
+      {
+        "code": "CSB202H1",
+        "name": "Further Exploration in Biotechnology",
+        "score": 85,
+        "reason": "Although not counting towards CSB programs, this course expands on your knowledge of biotechnology applications, relevant to your academic and career goals, and complements your previous coursework."
+      }
+    ],
+    "score": 0.6666666666666666,
+    "hit": 5
+  }
+]

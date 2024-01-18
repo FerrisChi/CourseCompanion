@@ -1,0 +1,32 @@
+[
+    {
+        "code": "CSC311H1",
+        "name": "Introduction to Machine Learning",
+        "score": 95,
+        "reason": "This course aligns with your interest in computer science and mathematics, and it introduces methods for automated learning which is a challenging and relevant field in both disciplines."
+    },
+    {
+        "code": "CSC310H1",
+        "name": "Information Theory",
+        "score": 90,
+        "reason": "This course covers foundational concepts in measuring information and data encoding, which are crucial in both computer science and mathematics, and it provides a rigorous challenge."
+    },
+    {
+        "code": "CSC301H1",
+        "name": "Introduction to Software Engineering",
+        "score": 85,
+        "reason": "As a computer science student, understanding software engineering practices is important, and this course offers a practical introduction that will be valuable for your academic growth."
+    },
+    {
+        "code": "CSC302H1",
+        "name": "Engineering Large Software Systems",
+        "score": 80,
+        "reason": "This course builds on CSC301H1 and will deepen your understanding of software system design, which is a valuable skill in the field of computer science."
+    },
+    {
+        "code": "CSC304H1",
+        "name": "Algorithmic Game Theory and Mechanism Design",
+        "score": 75,
+        "reason": "This course combines elements of economics, mathematics, and computer science, and it offers a challenging exploration of game theory and its applications in computing."
+    }
+]

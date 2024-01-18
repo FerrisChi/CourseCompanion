@@ -1,0 +1,82 @@
+[
+  {
+    "degree_program": "Bachelor in Environmental Science",
+    "department": "Department of Earth & Environmental Sciences",
+    "interest": "Sustainable development, climate change, and environmental policy; Keen on fieldwork and data analysis.",
+    "goal": "Aim for a GPA of 3.7 or above; plan to work with environmental NGOs; aspire to contribute to global sustainability efforts; consider a Master's degree in Environmental Policy",
+    "course_taken": "ENV333H1 - Ecological Worldviews; ENV200H1 - Assessing Global Change: Science and the Environment; ENV381H1 - Special Topics in Environment; ENV237H1 - Physics of the Changing Environment A; EEB215H1 - Conservation Biology; EEB434H1 - Marine Ecology",
+    "course_to_take": "ECO313H1 - Environmental Economics and Policies; ENV320H1 - National Environmental Policy; ESS198H1 - Resources and Sustainability",
+    "experience": "Volunteer work with a local conservation group; Summer research assistant on a climate change impact study; Internship with an environmental consulting firm.",
+    "extra_info": "Participates in sustainability initiatives on campus; Runs a blog on environmental awareness; Enthusiastic about outdoor activities and wildlife photography."
+  },
+  {
+    "degree_program": "Bachelor of Arts in International Relations",
+    "department": "Department of Political Science",
+    "interest": "Global affairs, diplomacy, political theory; Enthusiastic about public speaking and debate forums.",
+    "goal": "Aim to maintain a GPA of 3.6 or higher; aspires to intern at the United Nations or a related NGO; desires to work in the diplomatic service or international policy; Considering further studies with a focus on peace and conflict studies.",
+    "course_taken": "POL208H1 - Introduction to International Relations; POL341H1 - International Law: Operation of the International Legal Order; POL480H1 - Studies in Comparative Political Theory; POL300Y0 - Topics in Comparative Politics; POL300Y0 - Topics in Comparative Politics; POL12H1 - International Law: Foundations; POL466H1 - Topics in International Politics III",
+    "course_to_take": "POL477H1 - Advanced Topics in International Political Economy; VIC181H1 - Events in the Public Sphere: World Affairs; POL313H1 - Canadian Foreign Policy Process",
+    "experience": "Internship at a non-profit focused on international development; Participation in Model UN conferences; Volunteer at local community center for cultural exchange programs",
+    "extra_info": "Active member of the university's debate team with multiple competition accolades; Passionate about learning new languages and is currently proficient in French and Spanish; Organizes campus events for international culture and politics awareness."
+  },
+  {
+    "degree_program": "Bachelor of Science in Computer Science",
+    "department": "Department of Computer Science",
+    "interest": "Artificial Intelligence, Machine Learning, and Human-Computer Interaction; passionate about algorithm challenges and software development projects.",
+    "goal": "Secure a GPA of 3.8 or higher; obtain a software engineering position at a leading tech company; pursue a Master's degree in Artificial Intelligence.",
+    "course_taken": "CSC148H1 - Introduction to Computer Science; CSC373H1 - Algorithm Design, Analysis & Complexity; CSC369H1 - Operating Systems; CSC443H1 - Database System Technology; CSC458H1 - Computer Networking Systems; MAT482H1 - Topics in Mathematics",
+    "course_to_take": "ECE1724H - Special Topics in Software Systems: Artificial Intelligence; RSM338H1 - Applications of Machine Learning in Finance; CSC485H1 - Computational Linguistics",
+    "experience": "Software development intern at a tech startup; Undergraduate research assistant in AI lab; Organized coding bootcamps for peers",
+    "extra_info": "Participates in competitive programming contests; Maintains a tech blog to share project experiences; Active member of the computer science club"
+  },
+  {
+    "degree_program": "Bachelor of Science in Environmental Science",
+    "department": "Department of Environmental Studies",
+    "interest": "Renewable energy, climate change, and sustainability; enjoys field research and interdisciplinary studies.",
+    "goal": "Strives to maintain a GPA of 3.7 or higher; aspires to work with environmental NGOs or governmental agencies; plans to specialize in sustainable development practices.",
+    "course_taken": "EEB215H1 - Conservation Biology; GGR481H1 - Field Course in Environmental Geography; PHL373H1 - Issues in Environmental Ethics",
+    "course_to_take": "ENV462H1 - Energy and Environment: Economics, Politics, and Sustainability; ENV337H1 - Human Interactions with the Environment; ENV322H1 - International Environmental Policy",
+    "experience": "Environmental research assistant for a university project; Volunteer for local wildlife conservation efforts; Organizer for campus sustainability initiatives",
+    "extra_info": "Member of the university's green club; Participated in an environmental conference as a student speaker; Avid hiker and nature photographer"
+  },
+  {
+    "degree_program": "Bachelor of Science in Electrical Engineering",
+    "department": "Department of Electrical and Electronic Engineering",
+    "interest": "Renewable energy systems, power electronics, and embedded systems; fond of project-based learning and interdisciplinary collaborations.",
+    "goal": "Maintain a GPA of 3.6 or higher; secure a position in the energy sector; pursue a Master's in Renewable Energy Systems; contribute to sustainable energy solutions.",
+    "course_taken": "ECE201H1 - Electrical and Computer Engineering Seminar; ECE191H1 - Introduction to Electrical and Computer Engineering; CSC385H1 - Microprocessor Systems",
+    "course_to_take": "ENV450H1 - Energy and Environment Solutions; ECE1724H - Special Topics in Software Systems: Artificial Intelligence; CSC301H1 - Introduction to Software Engineering",
+    "experience": "Internship at a power company, part-time technician in university's electronics lab, volunteer for a non-profit promoting STEM education",
+    "extra_info": "Engages in DIY electronics projects, active in the IEEE student branch, presents at student conferences on renewable energy innovations"
+  },
+  {
+    "degree_program": "Bachelor of Arts in International Relations",
+    "department": "Department of Political Science",
+    "interest": "Global politics, foreign affairs, and diplomacy; enthusiastic about policy analysis and multicultural communication.",
+    "goal": "Aim to maintain a GPA above 3.5; aspire to work at an international organization like the UN; seek opportunities to study abroad; intend to learn multiple foreign languages.",
+    "course_taken": "POL208H1 - Introduction to International Relations; POL486H1 - Topics in International Politics I; POL477H1 - Advanced Topics in International Political Economy; PHL366H1 - Topics in Political Philosophy; CAS420H1 - Asia and the New Global Economy; SOC422H1 - Advanced Studies in Political Sociology",
+    "course_to_take": "POL340H1 - International Law: Foundations; POL341H1 - International Law: Operation of the International Legal Order; POL360H1 - Topics in Latin American Politics",
+    "experience": "Intern at a local government's international affairs department; participated in Model United Nations; volunteer for a non-profit organization focusing on global education.",
+    "extra_info": "Fluent in Spanish and learning French; active member of the campus debate club; regularly contributes articles to the university's political science journal."
+  },
+  {
+    "degree_program": "Bachelor of Science in Computer Science",
+    "department": "Department of Computer Science",
+    "interest": "Artificial intelligence, machine learning, and data analysis; passionate about innovative software solutions and collaborative projects.",
+    "goal": "Targeting a GPA of 3.8 or higher; ambition to work for leading tech companies; planning to specialize in AI for healthcare; aim to enroll in a Master's program focusing on data science.",
+    "course_taken": "CSC343H1 - Introduction to Databases; CSC207H1 - Software Design; CSC373H1 - Algorithm Design, Analysis & Complexity; CSC369H1 - Operating Systems; CSC301H1 - Introduction to Software Engineering; CSC148H1 - Introduction to Computer Science",
+    "course_to_take": "ECE1724H - Special Topics in Software Systems: Artificial Intelligence; CSC412H1 - Probabilistic Learning and Reasoning; CSC448H1 - Formal Languages and Automata",
+    "experience": "Software development intern at a startup; participated in hackathons; undergraduate teaching assistant for programming courses.",
+    "extra_info": "Co-founder of the coding club; attends tech conferences and workshops; enjoys developing open-source software."
+  },
+  {
+    "degree_program": "Bachelor of Science in Biotechnology",
+    "department": "Department of Life Sciences",
+    "interest": "Genetic engineering, bioinformatics, and pharmaceutical research; adaptive in lab environments and eager for hands-on learning.",
+    "goal": "Strives for a GPA of 3.9; aims to engage in cutting-edge research in gene therapy; plans to pursue a Master's degree in Molecular Biology; aspires to be part of biotech startups.",
+    "course_taken": "BIO260H1 - Concepts in Genetics; CSB201H1 - Molecular Biology, Biotechnology and You; BCH472Y1 - Advanced Summer Research Project in Biochemistry; MGY380H1 - Microbiology Laboratory I: Bacteria; IMM360H1 - Scientific Methods and Research in Immunology; CHE354H1 - Cellular and Molecular Biology",
+    "course_to_take": "CSB202H1 - Further Exploration in Biotechnology; MGY441H1 - Bioinformatics; HMB401H1 - Biomedical Advances & Technologies",
+    "experience": "Lab assistant at the biotechnology research center; volunteer in community health initiatives; participated in the university's science outreach programs",
+    "extra_info": "Active member of the BioTech Society; attended national biotech symposia; enjoys reading about breakthroughs in genomics"
+  }
+]

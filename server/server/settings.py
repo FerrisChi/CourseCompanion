@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "drf_yasg",
     "corsheaders",
+    "rest_framework",
+    "django_extensions",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -46,6 +48,11 @@ CORS_ALLOW_ALL_ORIGINS = True
 # This allows requests from all origins, for development purposes only
 
 REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication'
+    ],
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
@@ -54,11 +61,11 @@ REST_FRAMEWORK = {
     # ... other DRF settings ...
 }
 
-
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',  # Add the origins you want to allow requests from
-#     # Add more origins if needed
-# ]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',  # Add the origins you want to allow requests from
+    # Add more origins if needed
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -70,6 +77,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
 ]
+
+SECURE_SSL_REDIRECT = True
+
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True
 
 ROOT_URLCONF = "server.urls"
 
@@ -143,3 +156,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Celery settings
+CELERY_TIMEZONE = "Canada/Eastern"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60

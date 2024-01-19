@@ -13,7 +13,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.document_loaders import PyPDFLoader
 
-print(find_dotenv())
 load_dotenv(override=True)
 
 MODEL_NAME = os.getenv("OPENAI_MODEL_NAME")
@@ -69,9 +68,11 @@ class Chat(APIView):
         user_input = json.loads(json_string)['message']
         is_graduate_student = json.loads(json_string)['isGraduate']
         
+        request.session['is_graduate'] = is_graduate_student
 
         # bug not can run in local
         sess_id = request.session.session_key
+        print(request.session.keys(), request.session.session_key)
         sess_state = session_state_pool.get_session_state(sess_id)
 
         state, course_ctx, student_ctx, intro_memory, recommend_memory, transcript = (
@@ -191,3 +192,12 @@ class ChatState(APIView):
         )
         print("transcript: ", sess_state.transcript)
         return JsonResponse({"message": "Success."})
+
+
+class Visit(APIView):
+    def get(self, request):
+        visit = request.session.get('visit',0) + 1
+        request.session['visit'] = visit
+        print('visit count: ', visit)
+        print('session: ', request.session.session_key)
+        return JsonResponse({"message": f"Visit count:{request.session['visit']}"})

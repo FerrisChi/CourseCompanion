@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted, defineProps } from "vue";
+import { ref, watch, onMounted } from "vue";
 import botIcon from '@/assets/cap-logo.svg';
 import userIcon from '@/assets/person-icon.png';
 

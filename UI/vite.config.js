@@ -7,6 +7,8 @@ import ViteFonts from 'unplugin-fonts/vite'
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
+require('./load-env.js')
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -29,6 +31,7 @@ export default defineConfig({
       },
     }),
   ],
+  base: './',
   define: { 'process.env': {} },
   resolve: {
     alias: {

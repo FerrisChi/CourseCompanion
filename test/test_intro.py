@@ -5,7 +5,7 @@ import json
 import sys
 from stuModel import StuModel
 sys.path.append("..")
-from server.chatbot import getIntro, intro_prompt, student_schema
+from server.chatbot import getIntro
 
 
 def getIntroConversation(llm, student=None):

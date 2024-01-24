@@ -11,13 +11,20 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(override=True)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "server.settings")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-h!wllm@w-2_6#(m1y9ju#v7rrpz!y=4v0b=l11*1gz)=5%!7v5"
@@ -29,19 +36,67 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+]
+
+THIRD_PARTY_APPS = [
     "drf_yasg",
     "corsheaders",
     "rest_framework",
     "django_extensions",
+
+    # Authentication
+    "oauth2_provider",
+    "social_django",
 ]
+
+LOCAL_APPS = [
+    "chatbot.apps.ChatbotConfig",
+    "users.apps.UsersConfig",
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+
+# Custom user model
+AUTH_USER_MODEL = os.getenv('AUTH_USER_MODEL', 'users.MyUser')
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
+}
+
+# google login
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'your-client-id'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'your-client-secret'
+
+# Define the URL where to redirect after successfully logging in with Google
+LOGIN_REDIRECT_URL = "/users/login-success/"  # You can choose a different path
+
+# For storing the session data
+SOCIAL_AUTH_PIPELINE = (
+    # ...
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    # ...
+)
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
@@ -51,6 +106,8 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication'
     ],
     'DEFAULT_PARSER_CLASSES': [
@@ -76,6 +133,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
 ]
 
 SECURE_SSL_REDIRECT = True
@@ -157,6 +215,9 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# OAuth2 settings
+APPLICATION_NAME = os.getenv("APPLICATION_NAME", "chatbot")
+print(APPLICATION_NAME)
 # Celery settings
 CELERY_TIMEZONE = "Canada/Eastern"
 CELERY_TASK_TRACK_STARTED = True

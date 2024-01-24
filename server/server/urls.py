@@ -37,4 +37,10 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('chatbot/', include('chatbot.urls')),
     path('loader/', include('loader.urls')),
+    path('users/', include('users.urls')),
+
+
+    path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+
+    path('social-auth/', include('social_django.urls', namespace='social')),
 ]

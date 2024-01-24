@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
+import secrets
+from django.conf import settings
 
 # User = get_user_model()
 
@@ -40,3 +42,49 @@ course_schema = {
     },
     "required": ["code", "name", "score", "reason"],
 }
+
+
+def generate_secure_random_id():
+    min_value = 10 ** 10  # Minimum value of the range (inclusive)
+    max_value = 10 ** 11 - 1  # Maximum value of the range (exclusive)
+    return secrets.randbelow(max_value - min_value) + min_value
+
+
+class Conversation(models.Model):
+    """
+    Conversation model representing a chat conversation.
+    """
+    STATUS_CHOICES = [
+        ('active', 'Active'),
+        ('archived', 'Archived'),
+        ('ended', 'Ended'),
+    ]
+
+    id = models.BigIntegerField(primary_key=True, default=generate_secure_random_id, editable=False)
+    title = models.CharField(max_length=255, default="Conversation")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    favourite = models.BooleanField(default=False)
+    archive = models.BooleanField(default=False)
+
+    # status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
+
+    class Meta:
+        ordering = ['created_at']
+
+    def __str__(self):
+        return f"Conversation #{self.id}: {self.title} - {self.user.username}"
+
+
+class Message(models.Model):
+    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)
+    content = models.TextField(default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_from_user = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"Message {self.id} - {self.content}"

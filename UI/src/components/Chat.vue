@@ -11,22 +11,21 @@
       <div class="py-14" />
     </v-responsive>
     <v-text-field v-model="newMessageText" color="primary" label="Chat" variant="filled" class="chat-input"
-      @keydown.enter="sendMessage">
+      @keydown.enter="sendMessage"
+      :append-inner-icon="newMessageText ? 'mdi-send' : 'mdi-microphone'"
+      clear-icon="mdi-close-circle"
+      clearable
+      @click:append-inner="sendMessage">
       <template #append>
-        <transition name="scale">
-          <v-btn icon @click="sendMessage">
-            <v-icon>mdi-send</v-icon>
-          </v-btn>
-        </transition>
         <v-row align="center" class="slider">
           <v-col class="text-right">
-            <v-subheader class="text-right">Undergraduate</v-subheader>
+            <span>Undergraduate</span>
           </v-col>
           <v-col>
             <v-switch v-model="isGraduate" color="primary"></v-switch>
           </v-col>
           <v-col>
-            <v-subheader class="text-left">Graduate</v-subheader>
+            <span>Graduate</span>
           </v-col>
         </v-row>
       </template>
@@ -155,7 +154,7 @@ const sendMessage = async () => {
         inputReq = inputReq + ". I am doing a " + level + " degree";
       }
 
-      const response = await axiosCom.post('/chatbot/chat', {
+      const response = await axiosCom.post('/chatbot/chat/', {
         message: inputReq,
         isGraduate: isGraduate.value
       }, {

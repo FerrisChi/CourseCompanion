@@ -1,19 +1,20 @@
-from dotenv import load_dotenv, find_dotenv
 from rest_framework.views import APIView
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import render
+from rest_framework.response import Response
 from django.http import JsonResponse
 from django.core.files.storage import default_storage
+
 import os
 import json
 from .gptView import getIntro, getRAGQuery, Recommend, ExtractCourse, getCandid
 from .search_client import searchRAG
+from .models import Message
 
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.document_loaders import PyPDFLoader
 
-load_dotenv(override=True)
 
 MODEL_NAME = os.getenv("OPENAI_MODEL_NAME")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -140,6 +141,11 @@ class Chat(APIView):
         print(res)
         return JsonResponse({"message": res})
 
+class ChatLog(APIView):
+    def get(self, request):
+        user = request.user
+        logs = Message.objects.filter(user=user)
+        return Response({"message": logs}, status=status.HTTP_200_OK)
 
 class ChatReset(APIView):
     def post(self, request):

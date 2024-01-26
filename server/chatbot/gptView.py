@@ -14,22 +14,29 @@ from .prompts import (
     candid_prompt,
 )
 
-
 def getIntro(question, llm, memory) -> tuple[str | dict, bool, any]:
     stu_ext_chain = create_extraction_chain(schema=student_schema, llm=llm)
+    chain = None
+    res = None
 
-    chain = (
-        RunnablePassthrough.assign(
-            chat_history=RunnableLambda(memory.load_memory_variables)
-            | itemgetter("intro_history")
+    # check type of memory
+    if type(memory) is not list:
+        chain = (
+            RunnablePassthrough.assign(
+                chat_history=RunnableLambda(memory.load_memory_variables)
+                | itemgetter("intro_history")
+            )
+            | intro_prompt
+            | llm
         )
-        | intro_prompt
-        | llm
-    )
-    inputs = {"question": question}
-    res = chain.invoke(inputs)
-
-    memory.save_context({"question": question}, {"output": res.content})
+        res = chain.invoke({"question": question})
+        memory.save_context({"question": question}, {"output": res.content})
+    else:
+        chain = intro_prompt | llm
+        res = chain.invoke({
+            "chat_history": memory,
+            "question": question
+        })
 
     criterion = {
         "question": "Does the output contains degree program, department, interest, goal, experience and course taken?"
@@ -96,17 +103,25 @@ def Recommend(question, course_context, student_context, llm, memory) -> tuple[s
         + student_context
     )
 
-    chain = (
-        RunnablePassthrough.assign(
-            chat_history=RunnableLambda(memory.load_memory_variables)
-            | itemgetter("recommend_history")
+    chain = None
+    if type(memory) is not list:
+        chain = (
+            RunnablePassthrough.assign(
+                chat_history=RunnableLambda(memory.load_memory_variables)
+                | itemgetter("recommend_history")
+            )
+            | cot_recommend_prompt
+            | llm
         )
-        | cot_recommend_prompt
-        | llm
-    )
-    inputs = {"input_documents": context, "question": question}
-    res = chain.invoke(inputs)
-    memory.save_context({"question": question}, {"output": res.content})
+        res = chain.invoke({"input_documents": context, "question": question})
+        memory.save_context({"question": question}, {"output": res.content})
+    else:
+        chain = cot_recommend_prompt | llm
+        res = chain.invoke({
+            "chat_history": memory,
+            "question": question,
+            "input_documents": context
+        })
     recommendation_list = []
     if "Success!" in res.content:
         rec_str = res.content.replace("Success!", "", 1)

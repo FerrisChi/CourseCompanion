@@ -47,13 +47,11 @@ class LoginView(APIView):
             return Response({"error": "Invalid credentials."}, status=status.HTTP_404_NOT_FOUND)
         
         # Application represents a client that wants to access resources on behalf of a user.
-        print('111111')
         try:
             app = Application.objects.get(client_id=client_id)
             # app=None
         except:
             return Response({"error": "Invalid client_id."}, status=status.HTTP_404_NOT_FOUND)
-        print('222222')
         access_token = generate_token()
         refresh_token = generate_token()
 

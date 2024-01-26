@@ -34,7 +34,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue';
 import axiosCom from "@/components/axios";
-import { useStore} from 'vuex';
+import { useStore } from 'vuex';
 
 const store = useStore();
 

@@ -55,8 +55,10 @@ class Conversation(models.Model):
     Conversation model representing a chat conversation.
     """
     STATUS_CHOICES = [
-        ('active', 'Active'),
-        ('archived', 'Archived'),
+        # ('active', 'Active'),
+        ('started', 'Started')
+        ('recommend', 'Recommend'),
+        # ('archived', 'Archived'),
         ('ended', 'Ended'),
     ]
 
@@ -67,8 +69,7 @@ class Conversation(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     favourite = models.BooleanField(default=False)
     archive = models.BooleanField(default=False)
-
-    # status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='started')
 
     class Meta:
         ordering = ['created_at']
@@ -78,6 +79,7 @@ class Conversation(models.Model):
 
 
 class Message(models.Model):
+    id = models.BigIntegerField(primary_key=True, default=generate_secure_random_id, editable=False)
     conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)
     content = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)

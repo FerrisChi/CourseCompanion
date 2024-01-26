@@ -57,8 +57,8 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "chatbot.apps.ChatbotConfig",
     "users.apps.UsersConfig",
+    "chatbot.apps.ChatbotConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -222,3 +222,6 @@ print(APPLICATION_NAME)
 CELERY_TIMEZONE = "Canada/Eastern"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

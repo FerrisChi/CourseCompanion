@@ -8,8 +8,8 @@ const store = createStore({
       isLoggedIn: false,
       name: 'Please login',
     },
-    accessToken: localStorage.getItem('accessToken'),
-    refreshToken: localStorage.getItem('refreshToken'),
+    accessToken: sessionStorage.getItem('accessToken'),
+    refreshToken: sessionStorage.getItem('refreshToken'),
     conversations: [],
     messages: [],
   },
@@ -21,18 +21,16 @@ const store = createStore({
     logoutUser(state) {
       state.user.isLoggedIn = false;
       state.user.name = 'Please login';
+      state.accessToken = null;
+      state.refreshToken = null;
+      sessionStorage.removeItem('accessToken');
+      sessionStorage.removeItem('refreshToken');
     },
     setTokens(state, { accessToken, refreshToken }) {
       state.accessToken = accessToken;
       state.refreshToken = refreshToken;
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
-    },
-    clearTokens(state) {
-      state.accessToken = null;
-      state.refreshToken = null;
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
+      sessionStorage.setItem('accessToken', accessToken);
+      sessionStorage.setItem('refreshToken', refreshToken);
     },
     setMessage(state, messages) {
       state.messages = messages;
@@ -40,13 +38,18 @@ const store = createStore({
     addMessage(state, message) {
       state.messages.push(message);
     },
+    addConversation(state, conversation) {
+      state.conversations.push(conversation);
+    },
     setConversationList(state, convs) {
       state.conversations = convs;
     },
-    setConversation(state, {idx, conv}) {
-      state.conversations[idx] = conv;
+    setConversation(state, {index, conversation}) {
+      state.conversations[index] = conversation;
     },
-    
+    deleteConversation(state, index) {
+      state.conversations.splice(index, 1);
+    },
   },
   actions: {
     login({ commit }, userName) {
@@ -57,17 +60,17 @@ const store = createStore({
       commit('logoutUser');
     },
 
-    async fetchMessagesList({ commit }) {
+    async fetchConversationList({ commit }) {
       try {
         const res = await axiosCom.get('/chatbot/conversations/list/');
-        console.log(res.data);
+        // console.log(res.data);
         commit('setConversationList', res.data);
       } catch (err) {
         console.log('Error fetching conversations:', err);
       }
     },
 
-    async fetchMessages({ commit }, {conversationId}) {
+    async fetchMessages({ commit }, conversationId) {
       try {
         const res = await axiosCom.get('/chatbot/conversations/' + conversationId + '/messages/')
         // console.log(res.data)
@@ -90,7 +93,7 @@ const store = createStore({
       } catch (err) {
         console.log('Error sending message:', err);
       }
-    }
+    },
   },
   getters: {
     isLoggedIn: state => state.user.isLoggedIn,

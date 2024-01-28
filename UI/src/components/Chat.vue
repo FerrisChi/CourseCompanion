@@ -125,11 +125,6 @@ import { useStore } from "vuex";
 import { computed } from "vue";
 
 const newMessageText = ref("");
-// const conversation = ref({
-//   messages: [
-//     { is_bot: true, message: "Hi there! How can I assist you today with course recommendations?" },
-//   ],
-// });
 const error = ref(null);
 const isGraduate = ref(false);
 
@@ -144,11 +139,6 @@ const sendMessage = async () => {
   };
 
   if (message.message !== "") {
-    //  messages = [
-    //   ...messages,
-    //   message,
-    // ];
-
     newMessageText.value = "";
     try {
       console.log(message.content)

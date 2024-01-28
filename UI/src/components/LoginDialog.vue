@@ -1,5 +1,6 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="500px">
+    <v-container fluid>
     <v-card>
       <v-card-title class="headline">Login</v-card-title>
       <v-card-text>
@@ -23,11 +24,13 @@
         </form>
       </v-card-text>
       <v-card-actions>
+        <v-btn color="blue" text @click="closeDialog">Close</v-btn>
         <v-spacer></v-spacer>
         <v-btn color="primary" text @click="login">Login</v-btn>
         <v-btn color="secondary" text @click="loginWithGoogle">Login with Google</v-btn>
       </v-card-actions>
     </v-card>
+  </v-container>
   </v-dialog>
 </template>
 
@@ -52,7 +55,11 @@ const rules = {
   required: value => !!value || 'Required.',
 };
 
-const emit = defineEmits(['update:openDialog', 'login']);
+const emit = defineEmits(['update:openDialog']);
+
+const closeDialog = () => {
+  emit('update:openDialog', false);
+};
 
 watch(() => props.openDialog, (newVal) => {
   dialog.value = newVal;
@@ -86,7 +93,7 @@ const login = async () => {
       return config;
     });
     
-    store.dispatch('fetchMessagesList')
+    store.dispatch('fetchConversationList')
 
   } catch (err) {
     error.value = err.message;

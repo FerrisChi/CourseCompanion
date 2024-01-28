@@ -49,7 +49,7 @@ import DefaultView from './View.vue';
 
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
-import LoginDialog from './LoginDialog.vue';
+import LoginDialog from '@/components/LoginDialog.vue';
 
 const store = useStore();
 

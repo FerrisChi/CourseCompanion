@@ -11,7 +11,7 @@ urlpatterns = [
     path('visit', Visit.as_view(), name='visit'),
     
     # Post for a conversation
-    path('conversations/', ConversationCreate.as_view(), name='conversation-list-create'),
+    path('conversations/', ConversationCreate.as_view(), name='conversation-create'),
     # Get for all conversations
     path('conversations/list/', ConversationList.as_view(), name='conversation-list'),
     # Get, Put, Patch, Delete for a single conversation

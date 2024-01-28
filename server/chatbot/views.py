@@ -139,25 +139,25 @@ class ConversationCreate(generics.CreateAPIView):
         self.perform_create(serializer)
         
         # create the hello message
-        conversation = Conversation.objects.get(id=serializer.data['id'])
-        say_hi = "Hi there! How can I assist you today with Course Recommendations?",
+        conversation = serializer.instance
+        message = None
         try:
             message = Message(
                 conversation_id=conversation.id,
-                content = say_hi,
+                content = "Hi there! How can I assist you today with Course Recommendations?",
                 is_from_user=False,
             )
             message.save()
         except ObjectDoesNotExist:
             error = f"Conversation not created correctly."
-            Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             error_mgs = str(e)
             error = f"Failed to save hello as a message: {error_mgs}"
-            Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
 
         headers = self.get_success_headers(serializer.data)
-        return Response({"message": say_hi}, status=status.HTTP_200_OK, headers=headers)
+        return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
 
 class ConversationList(generics.ListAPIView):
     """
@@ -183,6 +183,7 @@ class ConversationDetail(generics.RetrieveUpdateDestroyAPIView):
         if conversation.user != self.request.user:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
         return super().delete(request, *args, **kwargs)
+    
     
 class ConversationFavourite(APIView):
     """
@@ -270,6 +271,6 @@ class MessageCreate(generics.CreateAPIView):
             return Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
 
         headers = self.get_success_headers(serializer.data)
-        return Response(message.__json__(), status=status.HTTP_200_OK, headers=headers)
+        return Response(serializer(message).data, status=status.HTTP_200_OK, headers=headers)
 
 

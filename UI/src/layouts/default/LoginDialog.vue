@@ -72,8 +72,6 @@ const login = async () => {
       email: email.value,
       password: password.value,
       client_id: store.getters.djangoClientId
-    }, {
-      withCredentials: true
     });
     
     const {access_token, refresh_token} = response.data;
@@ -87,6 +85,8 @@ const login = async () => {
       config.headers.Authorization = `Bearer ${access_token}`;
       return config;
     });
+    
+    store.dispatch('fetchMessagesList')
 
   } catch (err) {
     error.value = err.message;

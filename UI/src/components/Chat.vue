@@ -6,7 +6,7 @@
           <div class="text-body-2 font-weight-light mb-n1 white-text">Welcome to</div>
           <h1 class="text-h2 font-weight-bold white-text">CampusCompanion</h1>
         </div>
-        <chatWindow :conversation="conversation" />
+        <chatWindow />
       </div>
       <div class="py-14" />
     </v-responsive>
@@ -121,54 +121,48 @@ import chatWindow from "./ChatWindow.vue";
 import { ref } from "vue";
 import axiosCom from "@/components/axios"
 import { useEventBus } from "@/eventBus";
+import { useStore } from "vuex";
+import { computed } from "vue";
 
 const newMessageText = ref("");
-const conversation = ref({
-  messages: [
-    { is_bot: true, message: "Hi there! How can I assist you today with course recommendations?" },
-  ],
-});
+// const conversation = ref({
+//   messages: [
+//     { is_bot: true, message: "Hi there! How can I assist you today with course recommendations?" },
+//   ],
+// });
 const error = ref(null);
 const isGraduate = ref(false);
 
+const store = useStore();
+
+const messages = computed(() => store.state.messages)
+
 const sendMessage = async () => {
-  const  message = {
-    is_bot: false,
-    message: newMessageText.value.trim()
+  const message = {
+    is_from_user: true,
+    content: newMessageText.value.trim(),
   };
 
   if (message.message !== "") {
-     conversation.value.messages = [
-      ...conversation.value.messages,
-      message,
-    ];
+    //  messages = [
+    //   ...messages,
+    //   message,
+    // ];
 
-    // REST CALL
     newMessageText.value = "";
     try {
-      console.log(message.message)
-      // wait for axios to return
-      let inputReq = message.message;
-      if (conversation.value.messages.length === 2) {
+      console.log(message.content)
+      let inputReq = message.content;
+      if (messages.length === 1) {
         const level = isGraduate.value ? "graduate" : "undergraduate";
         inputReq = inputReq + ". I am doing a " + level + " degree";
       }
-
-      const response = await axiosCom.post('/chatbot/chat/', {
-        message: inputReq,
-        isGraduate: isGraduate.value
-      }, {
-        withCredentials: true
-      });
-      console.log(response.data.message)
-      const botMessage = {
-        is_bot: true,
-        message: response.data.message,
-      };
-      conversation.value.messages = [
-      ...conversation.value.messages,
-      botMessage,
-    ];
+      console.log(messages.value)
+      const conversationId = messages.value[0].conversation;
+      const isGraduateFlag = isGraduate.value;
+      store.commit('addMessage', message);
+      store.dispatch('sendMessage', {conversationId, inputReq, isGraduateFlag})
+      
     } catch (err) {
       error.value = err.message;
       console.log(error.value);

@@ -2,17 +2,21 @@
 import { ref, watch, onMounted } from "vue";
 import botIcon from '@/assets/cap-logo.svg';
 import userIcon from '@/assets/person-icon.png';
+import { useStore } from "vuex";
+import { computed } from "vue";
 
-const props = defineProps(["conversation"]);
 const chatWindow = ref(null);
 
 onMounted(() => {
   scrollToEnd();
 });
 
-watch(() => props.conversation.messages, () => {
+const store = useStore();
+const messages = computed(() => store.state.messages)
+
+watch(() => messages, () => {
   scrollToEnd();
-});
+})
 
 function scrollToEnd() {
   const element = chatWindow.value;
@@ -27,7 +31,7 @@ export default {
   methods: {
     containsArray(message) {
       try {
-        const parsedArray = JSON.parse(message.message);
+        const parsedArray = JSON.parse(message.content);
         return Array.isArray(parsedArray);
       } catch (error) {
         return false; // Handle the case when the string is not valid JSON
@@ -38,16 +42,18 @@ export default {
 </script>
 
 <template>
-  <div v-if="conversation.messages" ref="chatWindow" class="chat-window">
+  <div v-if="messages" ref="chatWindow" class="chat-window">
     <v-container>
       <v-row>
-        <v-col v-for="(message, index) in conversation.messages" :key="index" cols="12">
-          <div :class="['bubble', message.is_bot ? 'bot-bubble' : 'user-bubble']">
+        <v-col v-for="(message, index) in messages" :key="index" cols="12">
+          <div :class="['bubble', message.is_from_user === true ? 'user-bubble' : 'bot-bubble']">
             <div class="header">
-              <v-img class="icon" :src="message.is_bot ? botIcon : userIcon" width="40" height="40"></v-img>
+              <v-icon v-if="message.is_from_user === true" size="x-large">mdi-account</v-icon>
+              <v-icon v-if="message.is_from_user === false" size="x-large">mdi-school</v-icon>
+              <!-- <v-img class="icon" :src="message.is_from_user ? botIcon : userIcon" width="40" height="40"></v-img> -->
               <div class="content">
                 <div class="user-info">
-                  <span class="user-type">{{ message.is_bot ? 'CampusCompanion' : 'Student' }}</span>
+                  <span class="user-type">{{ message.is_from_user ? 'Student' : 'CampusCompanion'}}</span>
                 </div>
                 <div>
               <div v-if="containsArray(message)">
@@ -61,7 +67,7 @@ export default {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, index) in JSON.parse(message.message)" :key="index">
+                    <tr v-for="(item, index) in JSON.parse(message.content)" :key="index">
                       <td>{{ item.code }}</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.score }}</td>
@@ -70,7 +76,7 @@ export default {
                   </tbody>
                 </table>
               </div>
-              <div v-else class="text">{{ message.message }}</div>
+              <div v-else class="text">{{ message.content }}</div>
             </div>
               </div>
             </div>

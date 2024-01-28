@@ -15,6 +15,84 @@
 
         <v-divider></v-divider>
 
+        <div class="px-2">
+          <v-list>
+            <v-list-item v-show="loadingConversations">
+              <v-list-item-title class="d-flex justify-center">
+                <v-progress-circular indeterminate></v-progress-circular>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+
+          <!-- show conversations with title -->
+          <v-list nav>
+            <template
+                v-for="(conversation, cIdx) in conversations"
+                :key="conversation.id"
+            >
+              <v-list-item
+                  color="primary"
+                  rounded="xl"
+                  v-if="editingConversation && editingConversation.id === conversation.id"
+              >
+                <v-text-field
+                    v-model="editingConversation.title"
+                    :loading="editingConversation.updating"
+                    variant="underlined"
+                    append-icon="mdi-check"
+                    hide-details
+                    density="compact"
+                    autofocus
+                    @keyup.enter="updateConversation(cIdx)"
+                    @click:append="updateConversation(cIdx)"
+                ></v-text-field>
+              </v-list-item>
+              <v-hover
+                  v-if="!editingConversation || editingConversation.id !== conversation.id"
+                  v-slot="{ isHovering, props }"
+              >
+                <v-list-item
+                    rounded="xl"
+                    color="primary"
+                    @click="loadConversations(cIdx, conversation.id)"
+                    v-bind="props"
+                >
+                  <v-list-item-title>{{ (conversation.title && conversation.title !== '') ? conversation.title : $t('defaultConversationTitle') }}</v-list-item-title>
+                  <template v-slot:append>
+                    <div
+                        v-show="isHovering && conversation.id"
+                    >
+                      <v-btn
+                          icon="mdi-pencil"
+                          size="small"
+                          variant="text"
+                          @click.prevent="editConversation(cIdx)"
+                      >
+                      </v-btn>
+                      <v-btn
+                          icon="mdi-delete"
+                          size="small"
+                          variant="text"
+                          :loading="deletingConversationIndex === cIdx"
+                          @click.prevent="deleteConversation(cIdx)"
+                      >
+                      </v-btn>
+                      <v-btn
+                          icon="mdi-download"
+                          size="small"
+                          variant="text"
+                          @click.prevent="exportConversation(cIdx)"
+                      >
+                      </v-btn>
+                    </div>
+                  </template>
+                </v-list-item>
+              </v-hover>
+            </template>
+          </v-list>
+        </div>
+
+        <!-- settings menu -->
         <v-expansion-panels style="flex-direction: column;">
           <v-expansion-panel rounded="rounded-pill">
             <v-expansion-panel-title class="panelTitle" expand-icon="mdi-plus" collapse-icon="mdi-minus">
@@ -161,7 +239,8 @@
 </style>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 import axiosCom from "@/components/axios"
 import { useEventBus } from "@/eventBus";
 import SvgIcon from '@jamescoyle/vue-icon'
@@ -180,6 +259,16 @@ const rules = ref([
 const clearConfirmDialog = ref(false)
 const colorMode = ref('light')
   // settingspath: mdiCogOutline,
+
+const loadingConversations = ref(false)
+const bus = useEventBus();
+
+
+// for conversation list
+const store = useStore()
+const conversations = computed(() => store.state.conversations)
+const editingConversation = ref(false)
+const deletingConversationIndex = ref(false)
 
 const submitFile = () => {
   if (!selectedFile) {
@@ -206,7 +295,6 @@ const submitFile = () => {
 }
 
 const resetConversation = () => {
-  const bus = useEventBus();
   bus.$emit("reset-conversation");
   selectedFile = null;
   axiosCom.post('/chatbot/reset')
@@ -218,7 +306,76 @@ const resetConversation = () => {
     });
 }
 
+const loadConversations = async (idx, conversationId) => {
+  console.log('loadConversations', idx, conversationId)
+  loadingConversations.value = true
+  store.dispatch('fetchMessages', {idx, conversationId})
+  loadingConversations.value = false
+}
+
+
 const feedback = () => {
   window.open('https://github.com/FerrisChi/CourseCompanion/issues', '_blank')
+}
+
+const editConversation = (index) => {
+  editingConversation.value = conversations.value[index]
+}
+
+const updateConversation = async (index) => {
+  editingConversation.value.updating = true
+  const { data, error } = await useAuthFetch(`/api/chat/conversations/${editingConversation.value.id}/`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      title: editingConversation.value.title
+    })
+  })
+  if (!error.value) {
+    editingConversation.value.updating = false
+    conversations.value[index] = editingConversation.value
+  }
+  conversations.value[index].updating = false
+  editingConversation.value = false
+}
+
+const deleteConversation = async (index) => {
+  deletingConversationIndex.value = index
+  const { data, error } = await useAuthFetch(`/api/chat/conversations/${conversations.value[index].id}/`, {
+    method: 'DELETE'
+  })
+  deletingConversationIndex.value = null
+  if (!error.value) {
+    const deletingConversation = conversations.value[index]
+    conversations.value.splice(index, 1)
+    if (route.params.id && parseInt(route.params.id) === deletingConversation.id) {
+      await navigateTo('/')
+    }
+  }
+}
+
+const exportConversation = async (index) => {
+  let conversation = conversations.value[index]
+  let data = {}
+  data.conversation_topic = conversation.title
+  data.messages = []
+  let messages = await loadMessage(conversation.id)
+  for (let message of messages) {
+    let msg = {}
+    msg.role = message.is_bot ? "assistant" : "user"
+    msg.content = message.message
+    data.messages.push(msg)
+  }
+  let file_content = JSON.stringify(data)
+  let file_name = `${conversation.title}_${new Date()}`.replace(/[\/\\:*?"<>]/g, "_")
+  const element = document.createElement('a');
+  element.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(file_content),
+  );
+  element.setAttribute("download", file_name);
+  element.style.display = "none";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }
 </script>

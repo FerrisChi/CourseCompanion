@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = [
     # Authentication
     "oauth2_provider",
     "social_django",
+    "django_celery_results",
 ]
 
 LOCAL_APPS = [
@@ -218,10 +219,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # OAuth2 settings
 APPLICATION_NAME = os.getenv("APPLICATION_NAME", "chatbot")
 print(APPLICATION_NAME)
+
 # Celery settings
 CELERY_TIMEZONE = "Canada/Eastern"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_RESULT_BACKEND = "django-db"
+CELERY_CACHE_BACKEND = "django-cache"
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

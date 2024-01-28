@@ -1,24 +1,8 @@
 from django.db import models
-# from django.contrib.auth import get_user_model
 import secrets
 from django.conf import settings
-
+# from django.contrib.auth import get_user_model
 # User = get_user_model()
-
-# Create your models here.
-
-
-# class Answer(models.Model):
-#     writer = models.ForeignKey(User, on_delete=models.CASCADE)
-#     title = models.CharField(max_length=100)
-#     description = models.TextField()
-#     main_keyword = models.CharField(max_length=100)
-#     recommand_keyword = models.CharField(max_length=100)
-#     category = models.CharField(max_length=100)
-#     type = models.CharField(max_length=100)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
 
 student_schema = {
     "properties": {
@@ -56,7 +40,7 @@ class Conversation(models.Model):
     """
     STATUS_CHOICES = [
         # ('active', 'Active'),
-        ('started', 'Started')
+        ('started', 'Started'),
         ('recommend', 'Recommend'),
         # ('archived', 'Archived'),
         ('ended', 'Ended'),
@@ -86,7 +70,16 @@ class Message(models.Model):
     is_from_user = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['created_at']
     
     def __str__(self):
         return f"Message {self.id} - {self.content}"
+    
+    def __json__(self):
+        return {
+            "id": self.id,
+            "conversation": self.conversation.id,
+            "content": self.content,
+            "is_from_user": self.is_from_user,
+            "created_at": self.created_at,
+        }

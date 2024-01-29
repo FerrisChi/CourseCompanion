@@ -271,6 +271,6 @@ class MessageCreate(generics.CreateAPIView):
             return Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
 
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer(message).data, status=status.HTTP_200_OK, headers=headers)
+        return Response(MessageSerializer(message).data, status=status.HTTP_200_OK, headers=headers)
 
 

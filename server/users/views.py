@@ -97,7 +97,7 @@ class UserRegisterView(generics.CreateAPIView):
 
         user = serializer.save()
 
-        app = get_object_or_404(Application, name=settings.APPICATION_NAME)
+        app = get_object_or_404(Application, name=settings.APPLICATION_NAME)
         access_token = generate_token()
         refresh_token = generate_token()
 

@@ -217,8 +217,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # OAuth2 settings
-APPLICATION_NAME = os.getenv("APPLICATION_NAME", "chatbot")
-print(APPLICATION_NAME)
+APPLICATION_NAME = os.getenv("APPLICATION_NAME", "coursecompanion")
 
 # Celery settings
 CELERY_TIMEZONE = "Canada/Eastern"

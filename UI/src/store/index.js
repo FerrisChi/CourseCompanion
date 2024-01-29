@@ -11,7 +11,7 @@ const store = createStore({
     accessToken: sessionStorage.getItem('accessToken'),
     refreshToken: sessionStorage.getItem('refreshToken'),
     conversations: [],
-    messages: [],
+    messages: null,
   },
   mutations: {
     loginUser(state, userName) {

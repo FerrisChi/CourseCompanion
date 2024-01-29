@@ -14,17 +14,6 @@ class MyUser(AbstractUser):
         verbose_name = _("MyUser")
         verbose_name_plural = _("MyUsers")
 
-    def to_json(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "phone_number": self.phone_number,
-            "address": self.address,
-            "profile": self.profile,
-        }
-    
-    def __json__(self):
-        return self.to_json()
 
 class UserFile(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="files")

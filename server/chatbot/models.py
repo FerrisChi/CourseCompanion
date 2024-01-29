@@ -75,11 +75,3 @@ class Message(models.Model):
     def __str__(self):
         return f"Message {self.id} - {self.content}"
     
-    def __json__(self):
-        return {
-            "id": self.id,
-            "conversation": self.conversation.id,
-            "content": self.content,
-            "is_from_user": self.is_from_user,
-            "created_at": self.created_at,
-        }

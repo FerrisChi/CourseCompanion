@@ -1,5 +1,6 @@
 {
-  "signIn":"Se connecter",
+  "logIn":"Se connecter",
+  "logInWithGoogle":"Se connecter avec Google",
   "signUp":"S'inscrire",
   "username":"Nom d'utilisateur",
   "password":"Mot de passe",

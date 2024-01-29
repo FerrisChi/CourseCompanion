@@ -15,6 +15,7 @@
       :append-inner-icon="newMessageText ? 'mdi-send' : 'mdi-microphone'"
       clear-icon="mdi-close-circle"
       clearable
+      :disabled="logedIn && messages ? false : true"
       @click:append-inner="sendMessage">
       <template #append>
         <v-row align="center" class="slider">
@@ -131,6 +132,7 @@ const isGraduate = ref(false);
 const store = useStore();
 
 const messages = computed(() => store.state.messages)
+const logedIn = computed(() => store.state.user.isLoggedIn)
 
 const sendMessage = async () => {
   const message = {
@@ -141,21 +143,26 @@ const sendMessage = async () => {
   if (message.message !== "") {
     newMessageText.value = "";
     try {
-      console.log(message.content)
       let inputReq = message.content;
       if (messages.length === 1) {
         const level = isGraduate.value ? "graduate" : "undergraduate";
         inputReq = inputReq + ". I am doing a " + level + " degree";
       }
-      console.log(messages.value)
+      console.log(inputReq)
       const conversationId = messages.value[0].conversation;
-      const isGraduateFlag = isGraduate.value;
-      store.commit('addMessage', message);
-      store.dispatch('sendMessage', {conversationId, inputReq, isGraduateFlag})
       
+      store.commit('addMessage', message);
+      
+      const res = await axiosCom.post('/chatbot/conversations/' + conversationId + '/messages/create/', {
+        content: inputReq,
+        isGraduate: isGraduate.value,
+        is_from_user: true,
+        conversation: conversationId,
+      });
+      store.commit('addMessage', res.data);  
     } catch (err) {
       error.value = err.message;
-      console.log(error.value);
+      console.log('Error sending message:', err);
     }
   }
 };

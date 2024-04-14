@@ -2,6 +2,14 @@
 CourseCompanion is an innovative chatbot designed to assist University of Toronto students in finding courses that suit their academic needs and interests. Utilizing a GPT-based conversational pipeline, alongside advanced techniques from the fields of Language Model (LLM) and Retrieval-Augmentation-Generation, this tool offers personalized course recommendations to students at every level of their academic journey.
 
 
+## Background
+
+Navigating course selection at UofT presents challenges due to a system that lacks customization for individual interests, academic goals, and abilities. The abundance of options compounds stress, leading to suboptimal choices and setbacks.
+* CourseCompanion addresses this by providing tailored course recommendations based on an in-depth understanding of UofT's unique data, including department descriptions, current courses, and prerequisites. 
+* The system considers students' academic history, achievements, interests, industry experience, research, and future goals. Machine learning enhances adaptability to diverse courses and student experiences. 
+* Unlike human advisors, the AI system is available 24/7, offering a comprehensive and adaptable approach to support students in their academic journey.
+
+
 ## Features 
 ### Back-end
 * A sophisticated chatting pipeline utilizing LangChain and OpenAI GPT-4 to analyze students' profiles and provide course recommendations.
@@ -21,23 +29,45 @@ CourseCompanion is an innovative chatbot designed to assist University of Toront
 * File upload capability for course lists, personal resumes, and transcripts.
 
 
-## TODO:
-- [ ] UI: Better course data upload interface.
-- [ ] UI: More user setting functions like avatar and nickname.
-- [ ] Function: Automatically course data scrape.
-- [ ] Function: Support anonymous users.
-- [ ] Function: Support social accounts login such as Google using OAuth 2.0 for authentication.
-
 ## Video Demo
 It's an old demo so some new features are not included.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VmSh-Rj1xGM?si=7v2jPrhPq5G9YDJj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="Video Demo"></iframe>
 
-## Background
+[![Watch the video](https://img.youtube.com/vi/VmSh-Rj1xGM/hqdefault.jpg)](https://youtu.be/nTQUwghvy5Q)
 
-Navigating course selection at UofT presents challenges due to a system that lacks customization for individual interests, academic goals, and abilities. The abundance of options compounds stress, leading to suboptimal choices and setbacks.
-* CourseCompanion addresses this by providing tailored course recommendations based on an in-depth understanding of UofT's unique data, including department descriptions, current courses, and prerequisites. 
-* The system considers students' academic history, achievements, interests, industry experience, research, and future goals. Machine learning enhances adaptability to diverse courses and student experiences. 
-* Unlike human advisors, the AI system is available 24/7, offering a comprehensive and adaptable approach to support students in their academic journey.
+
+## Run CourseCampanion
+
+### To run the backend server:
+
+1. `cd server`
+
+2. Create the `.env` file in this directory. You can find a template in `example.env`.
+   
+3. Set up a local HTTPS environment. You can either:
+   1. Generate a self-signed certificate with OpenSSL. Make sure there's a `cert.pem` and a `key.pem` in this directory.
+   2. Use [Localtunnel](https://theboroer.github.io/localtunnel-www/). (In this case, use `runserver` command in the docker-compose.yml)
+
+4. (option) Build the docker image if you want:
+   
+   `docker build -t yourimagename .`
+
+5. Run Docker Compose:
+
+   `docker compose up`
+
+   * The backend server will be running at `https://localhost:1234`.
+   * See APIs in `https://127.0.0.1:1234/swagger/`
+
+### To run the User interface:
+1. `cd UI`
+
+2. Copy the `.env` file to this directory.
+
+3. `npm install`
+
+4. `npm run dev`
+    * The user interface will be running at `http://localhost:3000`
+
 
 ## Pipeline
 
@@ -93,45 +123,22 @@ Navigating course selection at UofT presents challenges due to a system that lac
    ![Qualitative evaluation criteria](assets/qualitative.png)
 
     Metrics:
-    |  | 0 | 1| 2| 3| 4| 5|
+    | Quality Score | 0 | 1| 2| 3| 4| 5|
     |--|---|--|--|-|--|--|
-    | Quality Score | 2 | 3 | 3 | 7 | 9 | 6 |
+    | Times | 2 | 3 | 3 | 7 | 9 | 6 |
 
-## Run CourseCampanion
-
-### To run the backend server:
-
-1. `cd server`
-
-2. Create the `.env` file in this directory. You can find a template in `example.env`.
-   
-3. Set up a local HTTPS environment. You can either:
-   1. Generate a self-signed certificate with OpenSSL. Make sure there's a `cert.pem` and a `key.pem` in this directory.
-   2. Use [Localtunnel](https://theboroer.github.io/localtunnel-www/). (In this case, use `runserver` command in the docker-compose.yml)
-
-4. (option) Build the docker image if you want:
-   
-   `docker build -t yourimagename .`
-
-5. Run Docker Compose:
-
-   `docker compose up`
-
-   * The backend server will be running at `https://localhost:1234`.
-   * See APIs in `https://127.0.0.1:1234/swagger/`
-
-### To run the User interface:
-1. `cd UI`
-
-2. Copy the `.env` file to this directory.
-
-3. `npm install`
-
-4. `npm run dev`
-    * The user interface will be running at `http://localhost:3000`
 
 ## Testing
 Test code in `test`:
 
 * `generator.py` is for Synthetic data generation. It generates students' information and saves it into `student_info.json`.
 * `stuModel.py` provides `StuModel` to act as a Student to interact with Advior and use Scoring Evaluator to evaluate the result.
+
+
+
+## TODO:
+- [ ] UI: Better course data upload interface.
+- [ ] UI: More user setting functions like avatar and nickname.
+- [ ] Function: Automatically course data scrape.
+- [ ] Function: Support anonymous users.
+- [ ] Function: Support social accounts login such as Google using OAuth 2.0 for authentication.

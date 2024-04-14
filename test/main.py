@@ -1,4 +1,5 @@
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
+
 from test_intro import getIntroConversation
 from test_recommend import getRecommend
 from stuModel import StuModel

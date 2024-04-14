@@ -1,4 +1,4 @@
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts import FewShotPromptTemplate, PromptTemplate
 from langchain.pydantic_v1 import BaseModel
 from langchain_experimental.tabular_synthetic_data.openai import (

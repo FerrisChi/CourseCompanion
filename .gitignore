@@ -1,8 +1,15 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 
+
 .vscode/
 .env
 .DS_Store
 key
 node_modules/
+
+*.pem
+*.crt
+*.key
+
+migrations/

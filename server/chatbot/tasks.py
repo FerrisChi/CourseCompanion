@@ -9,7 +9,6 @@ from celery import shared_task
 from celery.utils.log import get_task_logger
 
 from langchain.schema import HumanMessage, AIMessage
-from langchain.document_loaders import PyPDFLoader
 
 from .gptView import getIntro, getRAGQuery, Recommend, ExtractCourse, getCandid
 from .search_client import searchRAG
@@ -17,7 +16,7 @@ from .models import Message, Conversation
 from users.models import UserFile
 from .serializer import ConversationSerializer, MessageSerializer, ConversationsListSerializer
 
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 logger = get_task_logger(__name__)
 

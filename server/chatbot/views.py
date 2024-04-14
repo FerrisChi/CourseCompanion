@@ -12,7 +12,7 @@ from .models import Message, Conversation
 from .serializer import ConversationSerializer, MessageSerializer, ConversationsListSerializer
 from .tasks import send_gpt_request
 from langchain.memory import ConversationBufferMemory
-from langchain.document_loaders import PyPDFLoader
+from PyPDF2 import PdfFileReader
 
 
 User = get_user_model()
@@ -82,12 +82,12 @@ class ChatUpload(APIView):
         file_path = default_storage.path(file_name)
 
         try:
-            loader = PyPDFLoader(file_path)
-            pages = loader.load()
-            docu = " ".join([page.page_content for page in pages])
+            with open(file_path, "rb") as f:
+                reader = PdfFileReader(f)
+                pages = [reader.getPage(i).extract_text() for i in range(reader.getNumPages())]
 
-            sess_state.transcript = docu
-            session_state_pool.set_session_state(sess_id, sess_state)
+                sess_state.transcript = pages
+                session_state_pool.set_session_state(sess_id, sess_state)
 
             return JsonResponse({"message": "File uploaded."})
         except Exception as e:
@@ -176,6 +176,11 @@ class ConversationDetail(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'pk'
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            # Provide a suitable queryset that doesn't rely on the actual user
+            return Conversation.objects.none()
+        if not self.request.user.is_authenticated:
+            return Conversation.objects.none()
         return Conversation.objects.filter(user=self.request.user)
     
     def delete(self, request, *args, **kwargs):
@@ -213,7 +218,6 @@ class MessageList(generics.ListAPIView):
     def get_queryset(self):
         conversation = get_object_or_404(Conversation, id=self.kwargs['conversation_id'], user=self.request.user)
 
-        # return Message.objects.filter(conversation=conversation).select_related('conversation')
         return Message.objects.filter(conversation=conversation).order_by('created_at')
 
 class MessageCreate(generics.CreateAPIView):

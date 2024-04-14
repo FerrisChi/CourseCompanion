@@ -1,0 +1,65 @@
+version: "3.8"
+services:
+  chroma:
+    image: ghcr.io/chroma-core/chroma:latest
+    volumes:
+      - index_data:/chroma/.chroma/index
+    ports:
+      - 8000:8000
+    networks:
+      - net
+  rabbitmq:
+    image: rabbitmq:latest
+    volumes:
+      - rebbitmq_data:/rabbitmq
+    ports:
+      - 5672:5672
+    networks:
+      - net
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/redis
+    ports:
+      - 6379:6379
+    networks:
+      - net
+
+  web:
+    build: .
+    command: >
+      sh -c "python /server/manage.py makemigrations users chatbot loader &&
+      python /server/manage.py migrate && 
+      python /server/manage.py createsuperuser --username admin --email admin@admin.com --noinput && 
+      python /server/manage.py runserver_plus 0.0.0.0:3000 --cert-file cert.pem --key-file key.pem &&
+      celery -A server worker -l -loglevel=info"
+    
+    ports:
+      - 1234:3000
+    networks:
+      - net
+    depends_on:
+      - chroma
+      - rabbitmq
+      - redis
+    environment:
+      OPENAI_MODEL_NAME: ${OPENAI_MODEL_NAME}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      AUTH_USER_MODEL: ${AUTH_USER_MODEL}
+      APPLICATION_NAME: ${APPLICATION_NAME}
+
+volumes:
+  index_data:
+    driver: local
+  rebbitmq_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  net:
+    driver: bridge
+
+# exec ./server/manage.py runserver 127.0.0.1:1234
+
+# exec ./manage.py runserver_plus 127.0.0.1:1234 --cert-file cert.pem --key-file key.pem

@@ -32,7 +32,7 @@ Navigating course selection at UofT presents challenges due to a system that lac
 ## Video Demo
 It's an old demo so some new features are not included.
 
-[![Watch the video](https://img.youtube.com/vi/VmSh-Rj1xGM/hqdefault.jpg)](https://youtu.be/nTQUwghvy5Q)
+[![Watch the video](https://img.youtube.com/vi/VmSh-Rj1xGM/hqdefault.jpg)](https://www.youtube.com/watch?v=VmSh-Rj1xGM)
 
 
 ## Run CourseCampanion
